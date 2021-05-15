@@ -7,9 +7,10 @@ import Vue from "vue";
 import route from "ziggy";
 import Helper from "~/Helper";
 import configApp from "~/config.app";
-import Quasar from "~/Quasar";
-import iconSet from "~/Quasar/icon-set/material-icons";
 
+import Quasar from "quasar";
+import iconSet from "quasar/icon-set/material-icons";
+import "quasar/dist/quasar.ie.polyfills.js";
 Vue.use(Quasar, {
     config: {
         loadingBar: {
@@ -20,6 +21,7 @@ Vue.use(Quasar, {
     },
     iconSet
 });
+
 Vue.use(plugin);
 async function startApp() {
     //Define setting
@@ -34,6 +36,15 @@ async function startApp() {
         route(name, params, absolute, config);
     Vue.prototype.$route = router;
 
+    //Load Helper
+    Helper({
+        Vue,
+        router,
+        Inertia,
+        setting,
+        config: setting.config
+    });
+
     // Init Vue
     return new Vue({
         render: h =>
@@ -42,18 +53,10 @@ async function startApp() {
                     initialPage: JSON.parse(el.dataset.page),
                     resolveComponent: async function(name) {
                         const layouts = parseLayout();
-                        await Helper({
-                            Vue,
-                            router,
-                            Inertia,
-                            setting,
-                            config: setting.config,
-                            app: this
-                        });
 
                         return import(`./Pages/${name}`).then(
                             ({ default: page }) => {
-                                if (typeof page.layout !== "undefined") {
+                                if (page.layout !== "undefined") {
                                     page.layout = layouts["default"];
                                 } else {
                                     if (page.layout === "no-layout") {
@@ -85,4 +88,5 @@ function parseLayout() {
             return components;
         }, {});
 }
+
 startApp();

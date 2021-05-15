@@ -15,13 +15,15 @@ const mix = require("laravel-mix");
 
 mix.js("resources/js/app.js", "public/js").vue({ version: 2 });
 // .browserSync("inertia.test");
-mix.autoload({
-    jquery: ["$", "window.jQuery"]
-});
+// mix.autoload({
+//     jquery: ["$", "window.jQuery"]
+// });
+
 mix.sass("resources/css/app.scss", "public/css");
 mix.alias({
     ziggy: path.resolve("vendor/tightenco/ziggy/dist"),
-    "~": path.join(__dirname, "./resources/js")
+    "~": path.join(__dirname, "./resources/js"),
+    quasar: path.join(__dirname, "./resources/js/Plugins/Quasar")
 });
 // mix.webpackConfig({
 //     resolve: {

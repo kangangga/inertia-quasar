@@ -1,6 +1,5 @@
 import Vue from "vue";
 import lodash from "lodash";
-import "~/Quasar/dist/quasar.ie.polyfills.js";
 window._ = lodash;
 
 /**
