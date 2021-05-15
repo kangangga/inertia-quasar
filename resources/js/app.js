@@ -20,7 +20,6 @@ Vue.use(Quasar, {
     },
     iconSet
 });
-
 Vue.use(plugin);
 async function startApp() {
     //Define setting

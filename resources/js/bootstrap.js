@@ -1,8 +1,7 @@
 import Vue from "vue";
 import lodash from "lodash";
-window._ = lodash;
-
 import "~/Quasar/dist/quasar.ie.polyfills.js";
+window._ = lodash;
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

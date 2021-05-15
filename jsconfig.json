@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "app/*": ["*"],
+            "src/*": ["resources/js/*"],
+            "components/*": ["resources/js/Components/*"],
+            "layouts/*": ["resources/js/Layouts/*"],
+            "pages/*": ["resources/js/Pages/*"],
+            "assets/*": ["resources/js/Assets/*"],
+            "helper/*": ["resources/js/Helper/*"],
+            "vue$": ["node_modules/vue/dist/vue.esm.js"]
+        }
+    },
+    "exclude": ["dist", "app", "node_modules", "vendor"]
+}
