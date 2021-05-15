@@ -5,7 +5,7 @@ import { Inertia } from "@inertiajs/inertia";
 
 import Vue from "vue";
 import route from "ziggy";
-import Helper from "~/Helper";
+import Helper from "helper";
 import configApp from "~/config.app";
 
 import Quasar from "quasar";
@@ -54,7 +54,7 @@ async function startApp() {
                     resolveComponent: async function(name) {
                         const layouts = parseLayout();
 
-                        return import(`./Pages/${name}`).then(
+                        return import(`pages/${name}`).then(
                             ({ default: page }) => {
                                 if (page.layout !== "undefined") {
                                     page.layout = layouts["default"];

@@ -23,6 +23,11 @@ mix.sass("resources/css/app.scss", "public/css");
 mix.alias({
     ziggy: path.resolve("vendor/tightenco/ziggy/dist"),
     "~": path.join(__dirname, "./resources/js"),
+    components: path.join(__dirname, "./resources/js/Components"),
+    layouts: path.join(__dirname, "./resources/js/Layouts"),
+    pages: path.join(__dirname, "./resources/js/Pages"),
+    helper: path.join(__dirname, "./resources/js/Helper"),
+    assets: path.join(__dirname, "./resources/js/Assets"),
     quasar: path.join(__dirname, "./resources/js/Plugins/Quasar")
 });
 // mix.webpackConfig({
