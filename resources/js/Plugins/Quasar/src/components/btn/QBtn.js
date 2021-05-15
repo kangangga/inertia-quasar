@@ -171,15 +171,17 @@ export default Vue.extend({
                 }
             }
 
-            const go = () => {
+            const go = async () => {
                 // vue-router now throwing error if navigating
                 // to the same route that the user is currently at
                 // https://github.com/vuejs/vue-router/issues/2872
-                this.$router[this.replace === true ? "replace" : "push"](
-                    this.currentLocation.route,
-                    void 0,
-                    noop
-                );
+
+                this.$inertia.[this.replace === true ? "replace" : "visit"](await this.currentLocation)
+                // this.$router[this.replace === true ? "replace" : "push"](
+                //     this.currentLocation.route,
+                //     void 0,
+                //     noop
+                // );
             };
 
             this.$emit("click", e, go);

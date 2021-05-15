@@ -3,7 +3,7 @@
         About
         <inertia-link :href="$route('index')">Back</inertia-link>
 
-        <q-btn color="primary" icon="check" label="TES" to="/" />
+        <q-btn color="primary" icon="check" label="TES" to="index" />
     </q-page>
 </template>
 

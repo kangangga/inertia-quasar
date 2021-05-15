@@ -112,8 +112,21 @@ export default {
             return "standard";
         },
 
-        currentLocation() {
-            console.log(this);
+        async currentLocation() {
+            if (this.hasRouterLink === true) {
+                try {
+                    await this.$axios.get(this.$route(this.to));
+                } catch (err) {
+                    this.$q.notify({
+                        type: "negative",
+                        caption: `q-btn : to="${this.to}"`,
+                        message: err.message,
+                        timeout: 0
+                    });
+                    console.error(err);
+                }
+                return this.$route(this.to);
+            }
             // if (this.hasRouterLink === true) {
             //   // we protect from accessing this.$route without
             //   // actually needing it so that we won't trigger
@@ -132,8 +145,15 @@ export default {
             }
 
             if (this.hasRouterLink === true) {
-                attrs.href = this.currentLocation.href;
-                attrs.role = "link";
+                this.currentLocation
+                    .then(result => {
+                        attrs.href = result;
+                        attrs.role = "link";
+                    })
+                    .catch(err => {
+                        attrs.href = err;
+                        attrs.role = "link";
+                    });
             } else {
                 attrs.role = this.type === "a" ? "link" : "button";
             }
