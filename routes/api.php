@@ -2,7 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use Tightenco\Ziggy\Ziggy;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,4 +17,4 @@ Route::middleware('auth:api')->get('/user', fn (Request $request) => $request->u
 
 
 
-Route::post('routers', fn () => response()->json(new Ziggy));
+Route::post('routers', fn () => response()->json(new Tightenco\Ziggy\Ziggy));
